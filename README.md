@@ -49,6 +49,14 @@ npm run preview    # پیش‌نمایش خروجی build
 bun install
 bun run dev
 ```
+
+یا می تونین از [just](https://github.com/casey/just) استفاده کنین برای اجرا کوتاه تر:
+
+```bash
+# میتونین به نسبت دل خواهتون بیاین متغیر pm رو عوض کنین که از bun استفاده کنه یا npm یا npx یا...
+just i
+just rd # run dev
+```
  
 پوشهٔ `dist/` فقط فایل استاتیک است و روی هر هاستی (Netlify، Vercel، GitHub Pages، Nginx و …) قابل انتشار است.
  
@@ -76,7 +84,7 @@ bun run dev
     ├── hooks/                 useTheme، useWriteProgress، useGlyphMetrics، …
     ├── lib/                   توابع خالص: خروجی تصویر، اندازهٔ جوهر، ارقام فارسی
     ├── libs/                  لایهٔ اتصال به کتابخانه‌های بیرونی (metalFx.jsx)
-    └── styles/                توکن‌های رنگ و استایل هر بخش
+    └── styles/                توکن‌های رنگ و استایل هر بخش (CSS)
 ```
  
 نکتهٔ مهم: خود `metal-fx` از npm نصب می‌شود (`node_modules`). پوشهٔ `src/libs` فقط تنظیمات پیش‌فرض پروژه برای آن را نگه می‌دارد. آیکن‌های متحرک کامپوننت‌اند چون حرکتشان با CSS و حالت React کنترل می‌شود، برای همین در `src/components/icons` هستند و `public` فقط آیکن سایت را دارد.
@@ -120,9 +128,9 @@ const [open, setOpen] = useState(false);
  
 ## محدودیت‌ها
  
-- نوشتن به صورت آشکارشدن تدریجی با قلم متحرک است، نه ردگیریِ مسیر واقعیِ هر حرف. (شاید در آینده درست بشود)
+- نوشتن به صورت آشکارشدن تدریجی است، نه ردگیریِ مسیر واقعیِ هر حرف. (شاید در آینده درست بشود)
 - موقعیت خط‌های هوا و زمین تقریبی است و به فونت وابسته است.
-- بازتاب فلزی `metal-fx` به WebGL2 نیاز دارد.
+- بازتاب فلزی `metal-fx` به WebGL2 نیاز دارد. (در صورت نبود، input به صورت عادی نمایش داده میشه)
 - کپی تصویر به کلیپ‌بورد در همهٔ مرورگرها یکسان پشتیبانی نمی‌شود؛ در این حالت تصویر دانلود می‌شود.
 - تغییر تم با انیمیشن، به View Transitions API نیاز دارد. در مرورگرهایی که ندارند، تم بدون انیمیشن عوض می‌شود.
 
@@ -130,6 +138,6 @@ const [open, setOpen] = useState(false);
  
 - [`metal-fx`](https://www.npmjs.com/package/metal-fx) (مجوز MIT)، ساخته‌شده بر پایهٔ Paper Shaders (Apache 2.0).
 - فونت‌های Noto Nastaliq Urdu و Vazirmatn از طریق [Fontsource](https://fontsource.org) (مجوز OFL 1.1).
-- حرکت آیکن‌های کپی و پاک‌کردن، بازسازی CSS از [hugeicons-animated](https://hugeicons-animated.com) است.
+- حرکت آیکن‌های کپی و پاک‌کردن و ... بازسازی CSS از [hugeicons-animated](https://hugeicons-animated.com) است.
 - انیمیشن تغییر تم از [Transition Kit](https://transition-kit.space) (`circle-reveal`) الهام گرفته است.
 - مسیر آیکن GitHub از [Feather](https://feathericons.com) (مجوز MIT) است.
