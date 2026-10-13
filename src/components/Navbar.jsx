@@ -291,7 +291,7 @@ export function Navbar({ theme, guides, onCopy, onToggleTheme, onToggleGuides, o
           <IconButton label="پخش دوباره" onClick={act(onReplay)}>
             <ReplayIcon />
           </IconButton>
-          <IconButton OnClick={act(() => window.open(github_link, "_blank", "noopener,noreferrer"))} label="GitHub - گیت هاب">
+          <IconButton label="GitHub - گیت هاب" onClick={act(() => window.open(github_link, "_blank", "noopener,noreferrer"))}>
             <GithubIcon />
           </IconButton>
           <IconButton label="درباره" onClick={act(() => setShowAbout(true))}>
