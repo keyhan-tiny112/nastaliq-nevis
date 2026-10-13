@@ -1,0 +1,90 @@
+/* پس‌زمینهٔ مودال: روی همه‌چیز می‌نشیند و هرچه پشتش هست تار می‌شود */
+.card-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: color-mix(in srgb, var(--bg) 35%, transparent);
+  -webkit-backdrop-filter: blur(var(--card-blur, 10px));
+  backdrop-filter: blur(var(--card-blur, 10px));
+  animation: card-fade-in 0.2s ease-out;
+}
+
+.card-overlay[data-state='closed'] {
+  animation: card-fade-out 0.2s ease-in forwards;
+  pointer-events: none;
+}
+
+.card__window {
+  display: flex;
+  flex-direction: column;
+  width: min(560px, 100%);
+  max-height: calc(100dvh - 32px);
+  overflow: hidden;
+  outline: none;
+  border: 1px solid var(--muted);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  -webkit-backdrop-filter: blur(var(--card-blur, 10px)) saturate(1.4);
+  backdrop-filter: blur(var(--card-blur, 10px)) saturate(1.4);
+  box-shadow: 0 32px 64px -24px color-mix(in srgb, var(--fg) 55%, transparent);
+  animation: card-pop-in 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card-overlay[data-state='closed'] .card__window {
+  animation: card-pop-out 0.2s ease-in forwards;
+}
+
+.card__bar {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--muted);
+}
+
+.card__dots {
+  display: flex;
+  gap: 8px;
+}
+
+.card__dot {
+  display: block;
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+}
+.card__dot--close { background: #ff5f57; cursor: pointer; }
+.card__dot--min { background: #febc2e; }
+.card__dot--max { background: #28c840; }
+.card__dot--close:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: 2px;
+}
+
+.card__title {
+  flex: 1;
+  padding-inline-end: 52px; /* عرض سه دایره؛ عنوان را دقیقاً وسط نگه می‌دارد */
+  font-size: 13px;
+  text-align: center;
+  opacity: 0.7;
+}
+
+.card__body {
+  padding: 16px;
+  overflow: auto;
+}
+
+@keyframes card-fade-in { from { opacity: 0; } }
+@keyframes card-fade-out { to { opacity: 0; } }
+@keyframes card-pop-in {
+  from { opacity: 0; transform: translateY(10px) scale(0.96); }
+}
+@keyframes card-pop-out {
+  to { opacity: 0; transform: translateY(10px) scale(0.96); }
+}

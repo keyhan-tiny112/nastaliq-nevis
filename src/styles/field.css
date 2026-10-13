@@ -1,0 +1,46 @@
+.field {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 4px 22px 4px 8px;
+  background: var(--bg);
+  border: 1px solid var(--muted);
+  border-radius: 999px;
+  transition: box-shadow 0.2s;
+}
+
+.field:focus-within {
+  box-shadow: 0 0 0 4px var(--muted);
+}
+
+.field__input {
+  flex: 1;
+  min-width: 0;
+  padding: 12px 4px;
+  font: inherit;
+  font-size: 20px;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  outline: none;
+}
+
+.field__clear {
+  border-radius: 999px;
+  border-color: transparent;
+}
+
+.field__clear[data-hidden='true'] {
+  visibility: hidden;
+}
+
+@media (max-width: 520px) {
+  .field {
+    padding-right: 16px;
+  }
+  .field__input {
+    font-size: 18px;
+  }
+}

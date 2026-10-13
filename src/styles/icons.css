@@ -1,0 +1,178 @@
+/* انیمیشن آیکن‌ها — بازسازی CSS از hugeicons-animated */
+@keyframes wiggle {
+  25% { transform: rotate(-14deg); }
+  75% { transform: rotate(14deg); }
+}
+@keyframes spin-back {
+  to { transform: rotate(-360deg); }
+}
+
+.navbar__brand:hover .pen-icon,
+.icon-btn:hover .theme-icon {
+  animation: wiggle 0.6s;
+}
+.icon-btn:hover .replay-icon {
+  animation: spin-back 0.6s;
+}
+
+/* copy-01 */
+.copy-icon__front,
+.copy-icon__mask {
+  transform-origin: 15.5px 15.5px;
+}
+.copy-icon__front {
+  vector-effect: non-scaling-stroke;
+}
+.icon-btn:is(:hover, :focus-visible) .copy-icon__front {
+  animation: copy-front 0.86s;
+}
+.icon-btn:is(:hover, :focus-visible) .copy-icon__mask {
+  animation: copy-mask 0.86s;
+}
+@keyframes copy-front {
+  10% { transform: translate(0.45px, 0.45px) scale(0.97); }
+  34% { transform: translate(-6.2px, -6.2px) scale(1.2); }
+  46%, 56% { transform: translate(-6px, -6px) scale(1.14); }
+  76% { transform: translate(0.65px, 0.65px) scale(0.96); }
+  88% { transform: translate(-0.25px, -0.25px) scale(1.03); }
+}
+@keyframes copy-mask {
+  10% { transform: translate(0.45px, 0.45px) scale(0.97); }
+  34% { transform: translate(-6.2px, -6.2px) scale(1.24); }
+  46%, 56% { transform: translate(-6px, -6px) scale(1.18); }
+  76% { transform: translate(0.65px, 0.65px) scale(1.06); }
+  88% { transform: translate(-0.25px, -0.25px) scale(1.03); }
+}
+
+/* github */
+.github-icon__tail {
+  transform-origin: 9px 19px;
+}
+.github-icon__body {
+  stroke-dasharray: 1 2;
+}
+.icon-btn:is(:hover, :focus-visible) .github-icon__tail {
+  animation: github-tail 0.9s ease-in-out;
+}
+.icon-btn:is(:hover, :focus-visible) .github-icon__body {
+  animation: github-draw 0.9s ease-in-out;
+}
+@keyframes github-tail {
+  0%, 100% { transform: rotate(0); }
+  20% { transform: rotate(-22deg); }
+  45% { transform: rotate(16deg); }
+  70% { transform: rotate(-9deg); }
+}
+@keyframes github-draw {
+  0% { stroke-dasharray: 0 2; opacity: 0; }
+  8% { opacity: 1; }
+  70%, 100% { stroke-dasharray: 1 2; opacity: 1; }
+}
+
+/* cancel-01 */
+.cancel-icon__a,
+.cancel-icon__b {
+  stroke-dasharray: 1 2;
+}
+.icon-btn:is(:hover, :focus-visible) .cancel-icon__a {
+  animation: cancel-strike 0.9s;
+}
+.icon-btn:is(:hover, :focus-visible) .cancel-icon__b {
+  animation: cancel-strike 0.9s 0.08s backwards;
+}
+
+a.icon-btn {
+  text-decoration: none;
+}
+
+@keyframes cancel-strike {
+  0%, 5% { stroke-dasharray: 1 2; stroke-dashoffset: 0; }
+  25% { stroke-dasharray: 0 2; stroke-dashoffset: -1; opacity: 1; }
+  26%, 38% { stroke-dasharray: 0 2; stroke-dashoffset: 0; opacity: 0; }
+  40% { opacity: 1; }
+  58%, 100% { stroke-dasharray: 1 2; stroke-dashoffset: 0; opacity: 1; }
+}
+
+/* همبرگر منو ← X */
+.menu-icon path {
+  transform-box: view-box;
+  transition: transform 0.35s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.2s;
+}
+.menu-icon__top { transform-origin: 12px 7px; }
+.menu-icon__mid { transform-origin: 12px 12px; }
+.menu-icon__bot { transform-origin: 12px 17px; }
+
+.menu-icon[data-open='true'] .menu-icon__top { transform: translateY(5px) rotate(45deg); }
+.menu-icon[data-open='true'] .menu-icon__bot { transform: translateY(-5px) rotate(-45deg); }
+.menu-icon[data-open='true'] .menu-icon__mid { opacity: 0; transform: scaleX(0); }
+
+/* هاور: خط وسط کوتاه می‌شود */
+.icon-btn:hover .menu-icon[data-open='false'] .menu-icon__mid { transform: scaleX(0.6); }
+
+/* info */
+.info-icon__ring {
+  stroke-dasharray: 1 2;
+  transform: rotate(-90deg); /* کشیدن حلقه از بالا شروع شود */
+  transform-box: view-box;
+  transform-origin: 12px 12px;
+}
+.info-icon__stem {
+  stroke-dasharray: 1 2;
+  transform-box: view-box;
+  transform-origin: 12px 17px;
+}
+.info-icon__dot {
+  transform-box: view-box;
+  transform-origin: 12px 7.5px;
+}
+.info-icon__ripple {
+  fill: none;
+  transform-box: view-box;
+  transform-origin: 12px 12px;
+  animation: info-ripple 0.6s ease-out forwards;
+}
+
+/* hover / focus: نقطه می‌پرد، ساقه کش می‌آید */
+:is(.icon-btn, .info-icon):is(:hover, :focus-visible) .info-icon__dot {
+  animation: info-hop 0.6s ease-in-out;
+}
+:is(.icon-btn, .info-icon):is(:hover, :focus-visible) .info-icon__stem {
+  animation: info-stretch 0.6s ease-in-out;
+}
+
+/* click: (بعد از قانون‌های بالا آمده تا با هاور همزمان هم برنده باشد) */
+.info-icon .info-icon__burst .info-icon__ring {
+  animation: info-ring 0.6s ease-in-out;
+}
+.info-icon .info-icon__burst .info-icon__stem {
+  animation: info-draw 0.4s ease-out 0.15s backwards;
+}
+.info-icon .info-icon__burst .info-icon__dot {
+  animation: info-pop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s backwards;
+}
+
+@keyframes info-hop {
+  0%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-2.5px); }
+  55% { transform: translateY(0); }
+  75% { transform: translateY(-1px); }
+}
+@keyframes info-stretch {
+  0%, 100% { transform: scaleY(1); }
+  30% { transform: scaleY(0.75); }
+  55% { transform: scaleY(1.12); }
+  75% { transform: scaleY(0.95); }
+}
+@keyframes info-ring {
+  from { stroke-dasharray: 0 2; }
+}
+@keyframes info-draw {
+  from { stroke-dasharray: 0 2; }
+}
+@keyframes info-pop {
+  from { transform: scale(0); }
+}
+@keyframes info-ripple {
+  from { transform: scale(1); opacity: 0.5; }
+  to { transform: scale(1.8); opacity: 0; }
+}

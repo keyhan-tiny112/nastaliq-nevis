@@ -1,0 +1,13 @@
+:root {
+  --bg: #fff;
+  --fg: #0a0a0a;
+  --muted: color-mix(in srgb, var(--fg) 35%, transparent);
+  --font-ui: 'Vazirmatn', Tahoma, sans-serif;
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --bg: #0a0a0a;
+  --fg: #fff;
+  color-scheme: dark;
+}

@@ -1,0 +1,71 @@
+.stage {
+  margin-top: 24px;
+  overflow-x: auto;
+  border: 1px solid var(--muted);
+  border-radius: 18px;
+}
+
+.stage__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.guide-line {
+  stroke: var(--muted);
+  stroke-width: 1;
+  stroke-dasharray: var(--length);
+  stroke-dashoffset: var(--length);
+  animation: draw-line 0.9s ease forwards;
+}
+
+.guide-line--base {
+  stroke: var(--fg);
+  stroke-width: 1.6;
+}
+
+.nuqta {
+  fill: none;
+  stroke: var(--fg);
+  stroke-width: 1.1;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pop 0.4s backwards;
+}
+
+.bracket {
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.bracket.is-on {
+  opacity: 1;
+}
+
+.bracket path {
+  fill: none;
+  stroke: var(--fg);
+  stroke-width: 1;
+}
+
+.stage-label {
+  font: 12px var(--font-ui);
+  fill: var(--fg);
+}
+
+.stage-label--muted {
+  fill: var(--muted);
+}
+
+@keyframes draw-line {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+}

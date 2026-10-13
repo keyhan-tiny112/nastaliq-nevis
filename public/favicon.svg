@@ -1,0 +1,5 @@
+<svg version="1.1" id="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" xml:space="preserve" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" overflow="visible" aria-hidden="true" class="pen-icon">
+  <circle cx="12" cy="12" r="12" fill="white" stroke="none"/>
+  <path d="M3 21l3.5-.8L19 7.7a2.1 2.1 0 000-3l-.7-.7a2.1 2.1 0 00-3 0L2.8 16.5 3 21z"/>
+  <path d="M13.5 5.8l4.7 4.7"/>
+</svg>

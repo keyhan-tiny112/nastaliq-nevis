@@ -1,0 +1,21 @@
+.toast {
+  position: fixed;
+  inset-inline: 0;
+  bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  z-index: 9;
+  width: max-content;
+  max-width: 90%;
+  margin: auto;
+  padding: 8px 18px;
+  font-size: 14px;
+  color: var(--bg);
+  background: var(--fg);
+  border-radius: 999px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.toast:not(:empty) {
+  opacity: 1;
+}
