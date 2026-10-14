@@ -38,7 +38,7 @@ function seoFiles(siteUrl) {
 
 export default defineConfig(({ command, mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
-  const siteUrl = (env.VITE_SITE_URL || 'https://example.com').replace(/\/+$/, '');
+  const siteUrl = (env.VITE_SITE_URL || 'https://keyhan-tiny112.github.io/nastaliq-nevis').replace(/\/+$/, '');
   if (command === 'build' && !env.VITE_SITE_URL) {
     console.warn('\n⚠ VITE_SITE_URL تنظیم نشده؛ آدرس نمونهٔ example.com در canonical و sitemap قرار گرفت.\n  فایل .env.production بساز (نمونه: .env.example).\n');
   }
