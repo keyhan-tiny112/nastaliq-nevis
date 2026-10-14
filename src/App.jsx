@@ -8,6 +8,7 @@ import { useDebouncedValue } from '@/hooks/useDebouncedValue';
 import { useTheme } from '@/hooks/useTheme';
 import { useToast } from '@/hooks/useToast';
 import { copyImageToClipboard, downloadBlob, renderTextToBlob } from '@/lib/exportImage';
+import { About } from '@/components/About';
 
 export default function App() {
   const { theme, toggle: toggleTheme } = useTheme();
@@ -26,17 +27,19 @@ export default function App() {
 
   const copyImage = async () => {
     if (!shown.trim()) return;
+    // رندر و کپی همزمان شروع می‌شوند تا clipboard.write همان لحظهٔ کلیک
+    // (داخل user activation) صدا زده شود؛ وگرنه GitHub Pages کپی را رد می‌کند.
+    const blobPromise = renderTextToBlob(shown);
     try {
-      const blob = await renderTextToBlob(shown);
-      try {
-        await copyImageToClipboard(blob);
-        show('تصویر کپی شد');
-      } catch {
-        downloadBlob(blob);
-        show('کپی ممکن نشد؛ تصویر دانلود شد');
-      }
+      await copyImageToClipboard(blobPromise);
+      show('تصویر کپی شد');
     } catch {
-      show('خطا در ساخت تصویر');
+      try {
+        downloadBlob(await blobPromise);
+        show('کپی ممکن نشد؛ تصویر دانلود شد');
+      } catch {
+        show('خطا در ساخت تصویر');
+      }
     }
   };
 
@@ -56,6 +59,7 @@ export default function App() {
         <p className="caption">
           هر ◇ یک «نقطه» (پهنای قلم) است. اعداد بالا پهنای هر حرف را به نقطه نشان می‌دهند؛ خط‌های هوا و زمین تقریبی‌اند.
         </p>
+        <About />
       </main>
       <Toast message={message} />
     </>

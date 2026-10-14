@@ -10,6 +10,7 @@ export function useFontVersion() {
   useEffect(() => {
     let alive = true;
     const bump = () => alive && setVersion((v) => v + 1);
+    if (!document.fonts) { bump(); return; } // Font Loading API نیست
     document.fonts.load(`${FONT_SIZE}px ${FONT_FAMILY}`, 'نستعلیق').then(bump, bump);
     document.fonts.addEventListener('loadingdone', bump);
     return () => {

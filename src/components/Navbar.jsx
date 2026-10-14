@@ -11,7 +11,6 @@ import { ThemeIcon } from './icons/ThemeIcon';
 import { GithubIcon } from './icons/GithubIcon';
 import { InfoIcon } from './icons/InfoIcon';
 import { Card } from './Card';
-import { div } from 'motion/react-client';
 
 const ABOUT_TEXT = `
 <h1>نستعلیق‌نویس</h1>
@@ -35,8 +34,8 @@ const ABOUT_TEXT = `
   <li><strong>input با افکت فلزی:</strong> با کتابخانهٔ <code>metal-fx</code>؛ اگر WebGL2 در دسترس نباشد، input عادی نمایش داده می‌شود.</li>
   <li><strong>موبایل:</strong> در صفحه‌های کوچک، دکمه‌های navbar داخل یک منوی همبرگری با آیکن متحرک جمع می‌شوند.</li>
   <li><strong>آیکن‌های متحرک:</strong> کپی، پاک‌کردن، اطلاعات، همبرگر و … همه با CSS خالص انیمیشن دارند.</li>
-  <li><strong>کارت مودال:</strong> پنجرهٔ مک‌مانند روی همهٔ عناصر، با پس‌زمینهٔ تار.</li>
-  <li><strong>دسترس‌پذیری:</strong> برچسب برای همهٔ دکمه‌ها، مدیریت فوکوس در مودال، و احترام به <code>prefers-reduced-motion</code>.</li>
+  <li><strong>کارت مدل:</strong> پنجرهٔ مک‌مانند روی همهٔ عناصر، با پس‌زمینهٔ تار.</li>
+  <li><strong>دسترسی پذیری:</strong> برچسب برای همهٔ دکمه‌ها، مدیریت فوکوس در مدل، و احترام به <code>prefers-reduced-motion</code>.</li>
 </ul>
 
 <h2>استک</h2>
@@ -78,7 +77,7 @@ const ABOUT_TEXT = `
 
 برید به سایت <a href="https://keyhan-tiny112.github.io/nastaliq-nevis" target="_blank" rel="noopener noreferrer">https://keyhan-tiny112.github.io/nastaliq-nevis</a> و از نستعلیق‌نویس استفاده کنید. هیچ نصب یا ثبت‌نامی لازم نیست.
 
-<><h3>از سورس (توسعه‌دهنده)</h3>
+<h3>از سورس (توسعه‌دهنده)</h3>
 
 <p>
   Node.js نسخهٔ ۱۸ یا بالاتر لازم است (<code>.nvmrc</code>: نسخهٔ ۲۰).
@@ -114,7 +113,7 @@ bun run dev</code></pre>
     ├── components/
     │   ├── Navbar.jsx         نوار بالا و منوی همبرگری موبایل
     │   ├── TextField.jsx      input با افکت metal-fx و دکمهٔ پاک‌کردن
-    │   ├── Card.jsx           پنجرهٔ مک به صورت مودال
+    │   ├── Card.jsx           پنجرهٔ مک به صورت مدل
     │   ├── IconButton.jsx · Toast.jsx · ErrorBoundary.jsx
     │   ├── icons/             آیکن‌های متحرک (Copy، Cancel، Info، Menu، …)
     │   └── stage/             بوم نستعلیق: خط‌ها، خط‌کش نقطه، الف، قلم (PenNib)
@@ -301,8 +300,8 @@ export function Navbar({ theme, guides, onCopy, onToggleTheme, onToggleGuides, o
       </header>
 
       <Card open={showAbout} onClose={() => setShowAbout(false)} title="درباره نستعلیق‌نویس">
-        <div dangerouslySetInnerHTML={{ __html: ABOUT_TEXT }} />
-        <p>
+        <div className="about-card" dangerouslySetInnerHTML={{ __html: ABOUT_TEXT }} />
+        <p className="about-card__credit">
           اثری از <a href="https://github.com/keyhan-tiny112" target="_blank" rel="noopener noreferrer"><strong>کیهان</strong></a>، ۲۰۲۶
         </p>
       </Card>

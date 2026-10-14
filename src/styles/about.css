@@ -1,0 +1,35 @@
+.about {
+  max-width: 720px;
+  margin: 48px auto 0;
+  padding-top: 32px;
+  border-top: 1px solid var(--muted);
+}
+
+.about h2 {
+  margin: 32px 0 8px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.about h2:first-child {
+  margin-top: 0;
+}
+
+.about p,
+.about dd,
+.about li {
+  line-height: 2;
+}
+
+.about dt {
+  margin-top: 12px;
+  font-weight: 600;
+}
+
+.about dd {
+  margin: 0;
+}
+
+.about ol {
+  padding-inline-start: 22px;
+}

@@ -3,15 +3,93 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
     <title>نستعلیق‌نویس | آموزش خط نستعلیق با انیمیشن</title>
-    <meta name="description" content="متنت را بنویس و ببین خط نستعلیق گام‌به‌گام با خط‌کش نقطه، خط هوا و زمین و اندازهٔ هر حرف جلوی چشمت نوشته می‌شود." />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="description" content="هر متن فارسی را بنویس و ببین به خط نستعلیق گام‌به‌گام نوشته می‌شود؛ همراه با خط هوا و زمین، خط‌کش نقطه و اندازهٔ هر حرف." />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- %SITE_URL% هنگام build با مقدار VITE_SITE_URL جایگزین می‌شود (vite.config.js) -->
+    <link rel="canonical" href="%SITE_URL%/" />
+    <link rel="alternate" hreflang="fa" href="%SITE_URL%/" />
+    <link rel="alternate" hreflang="x-default" href="%SITE_URL%/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="نستعلیق‌نویس" />
+    <meta property="og:title" content="نستعلیق‌نویس | آموزش خط نستعلیق با انیمیشن" />
+    <meta property="og:description" content="هر متن فارسی را بنویس و ببین به خط نستعلیق گام‌به‌گام نوشته می‌شود؛ همراه با خط‌کش نقطه و اندازهٔ هر حرف." />
+    <meta property="og:url" content="%SITE_URL%/" />
+    <meta property="og:locale" content="fa_IR" />
+    <meta property="og:image" content="%SITE_URL%/og-image.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="کلمهٔ «نستعلیق» به خط نستعلیق، همراه با خط‌کش نقطه و خط‌های هوا و زمین" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="نستعلیق‌نویس | آموزش خط نستعلیق با انیمیشن" />
+    <meta name="twitter:description" content="هر متن فارسی را بنویس و ببین به خط نستعلیق گام‌به‌گام نوشته می‌شود." />
+    <meta name="twitter:image" content="%SITE_URL%/og-image.png" />
+    <meta name="twitter:image:alt" content="کلمهٔ «نستعلیق» به خط نستعلیق، همراه با خط‌کش نقطه" />
+
+    <!-- آیکن‌ها -->
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="manifest" href="./site.webmanifest" />
+
+    <!-- داده ساخت‌یافته: فقط آنچه واقعاً در صفحه هست (بدون امتیاز و نظر ساختگی) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "%SITE_URL%/#website",
+            "url": "%SITE_URL%/",
+            "name": "نستعلیق‌نویس",
+            "alternateName": "نستعلیق نویس",
+            "inLanguage": "fa"
+          },
+          {
+            "@type": "WebApplication",
+            "@id": "%SITE_URL%/#app",
+            "url": "%SITE_URL%/",
+            "name": "نستعلیق‌نویس",
+            "description": "هر متن فارسی را بنویس و ببین به خط نستعلیق گام‌به‌گام نوشته می‌شود؛ همراه با خط هوا و زمین، خط‌کش نقطه و اندازهٔ هر حرف.",
+            "applicationCategory": "EducationalApplication",
+            "operatingSystem": "Any",
+            "browserRequirements": "Requires JavaScript",
+            "inLanguage": "fa",
+            "isAccessibleForFree": true,
+            "image": "%SITE_URL%/og-image.png",
+            "isPartOf": { "@id": "%SITE_URL%/#website" }
+          }
+        ]
+      }
+    </script>
+
+    <!-- تم ذخیره‌شده قبل از اولین رنگ‌آمیزی اعمال می‌شود تا صفحه چشمک نزند -->
     <script>
-      try { document.documentElement.dataset.theme = localStorage.getItem('nastaliq-theme') === 'dark' ? 'dark' : 'light'; } catch (e) {}
+      try {
+        var dark = localStorage.getItem('nastaliq-theme') === 'dark';
+        document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+        if (dark) document.querySelector('meta[name="theme-color"]').content = '#0a0a0a';
+      } catch (e) {}
     </script>
   </head>
   <body>
     <div id="root"></div>
+    <!-- بات ها و کاربرانی که جاوااسکریپت ندارند -->
+    <noscript>
+      <h1>نستعلیق‌نویس</h1>
+      <p>
+        نستعلیق‌نویس هر متن فارسی را جلوی چشم شما به خط نستعلیق می‌نویسد و خط هوا و زمین، خط‌کش نقطه و اندازهٔ هر حرف را نشان می‌دهد.
+        برای استفاده از آن جاوااسکریپت مرورگر را فعال کنید.
+      </p>
+    </noscript>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

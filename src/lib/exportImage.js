@@ -32,13 +32,24 @@ export async function renderTextToBlob(text, { scale = 2, padding = 70 } = {}) {
   );
 }
 
-export async function copyImageToClipboard(blob) {
-  await navigator.clipboard.write([new ClipboardItem({ [blob.type]: blob })]);
+/**
+ * کپی تصویر به کلیپ‌بورد.
+ * blobOrPromise می‌تواند Promise<Blob> باشد تا clipboard.write همان لحظهٔ کلیک صدا زده شود
+ * (user activation). Chrome 121+ و Safari 18+ از Promise<Blob> پشتیبانی می‌کنند.
+ */
+export async function copyImageToClipboard(blobOrPromise) {
+  if (typeof ClipboardItem === 'undefined' || !navigator.clipboard?.write) {
+    throw new Error('Clipboard API not supported');
+  }
+  const blobPromise = blobOrPromise instanceof Promise ? blobOrPromise : Promise.resolve(blobOrPromise);
+  await navigator.clipboard.write([new ClipboardItem({ 'image/png': blobPromise })]);
 }
 
 export function downloadBlob(blob, filename = 'nastaliq.png') {
   const url = URL.createObjectURL(blob);
   const a = Object.assign(document.createElement('a'), { href: url, download: filename });
+  document.body.appendChild(a); // برخی مرورگرها بدون append کار نمی‌کنند
   a.click();
+  a.remove();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }

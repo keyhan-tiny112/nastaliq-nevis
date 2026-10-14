@@ -5,7 +5,7 @@ const EXIT_MS = 200; // باید با مدت انیمیشن بستن در card.c
 const FOCUSABLE = 'a[href],button:not([disabled]),input:not([disabled]),select,textarea,[tabindex]:not([tabindex="-1"])';
 
 /**
- * پنجرهٔ مک به صورت مودال: روی همهٔ عناصر (portal در body) باز می‌شود، پشتش را تار می‌کند،
+ * پنجرهٔ مک به صورت مدل: روی همهٔ عناصر (portal در body) باز می‌شود، پشتش را تار می‌کند،
  * با دایرهٔ قرمز، کلیک روی پس‌زمینه یا Escape بسته می‌شود. چرخش/افکت موس ندارد.
  */
 export function Card({ open, onClose, title, children, blur = 10, className = '' }) {
@@ -29,7 +29,7 @@ export function Card({ open, onClose, title, children, blur = 10, className = ''
     if (!open || !mounted) return;
     const previouslyFocused = document.activeElement;
     const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden'; // پشت مودال اسکرول نشود
+    document.body.style.overflow = 'hidden'; // پشت مدل اسکرول نشود
     windowRef.current?.focus();
 
     const onKeyDown = (e) => {
