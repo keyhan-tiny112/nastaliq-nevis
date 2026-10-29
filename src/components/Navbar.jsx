@@ -281,25 +281,42 @@ export function Navbar({ theme, guides, onCopy, onToggleTheme, onToggleGuides, o
           <IconButton label="کپی نستعلیق به صورت تصویر" onClick={act(onCopy)}>
             <CopyIcon />
           </IconButton>
-          <IconButton label={theme === 'light' ? 'حالت تاریک' : 'حالت روشن'} onClick={act(onToggleTheme)}>
-            <ThemeIcon theme={theme} />
-          </IconButton>
-          <IconButton label="نمایش خط‌کش‌ها" aria-pressed={guides} onClick={act(onToggleGuides)}>
-            <RulerIcon />
-          </IconButton>
+
           <IconButton label="پخش دوباره" onClick={act(onReplay)}>
             <ReplayIcon />
           </IconButton>
-          <IconButton label="GitHub - گیت هاب" onClick={act(() => window.open(github_link, "_blank", "noopener,noreferrer"))}>
-            <GithubIcon />
+
+          <IconButton
+            label="نمایش خط‌کش‌ها"
+            aria-pressed={guides}
+            onClick={act(onToggleGuides)}
+          >
+            <RulerIcon />
           </IconButton>
+
+          <IconButton
+            label={theme === 'light' ? 'حالت تاریک' : 'حالت روشن'}
+            onClick={act(onToggleTheme)}
+          >
+            <ThemeIcon theme={theme} />
+          </IconButton>
+
           <IconButton label="درباره" onClick={act(() => setShowAbout(true))}>
             <InfoIcon />
+          </IconButton>
+
+          <IconButton
+            label="GitHub - گیت هاب"
+            onClick={act(() =>
+              window.open(github_link, "_blank", "noopener,noreferrer")
+            )}
+          >
+            <GithubIcon />
           </IconButton>
         </div>
       </header>
 
-      <Card open={showAbout} onClose={() => setShowAbout(false)} title="درباره نستعلیق‌نویس">
+      <Card open={showAbout} onClose={() => setShowAbout(false)} title="~/about.html">
         <div className="about-card" dangerouslySetInnerHTML={{ __html: ABOUT_TEXT }} />
         <p className="about-card__credit">
           اثری از <a href="https://github.com/keyhan-tiny112" target="_blank" rel="noopener noreferrer"><strong>کیهان</strong></a>، ۲۰۲۶
