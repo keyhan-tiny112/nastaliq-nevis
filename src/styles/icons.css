@@ -176,3 +176,20 @@ a.icon-btn {
   from { transform: scale(1); opacity: 0.5; }
   to { transform: scale(1.8); opacity: 0; }
 }
+
+/* ruler: هنگام hover/focus خط‌کش تکان می‌خورد */
+.ruler-icon__body {
+  transform-box: view-box;
+  transform-origin: 12px 12px;
+}
+.icon-btn:is(:hover, :focus-visible) .ruler-icon__body {
+  animation: ruler-shake 0.6s ease-in-out;
+}
+@keyframes ruler-shake {
+  0%, 100% { transform: rotate(0); }
+  15% { transform: rotate(-14deg) translateX(-0.5px); }
+  35% { transform: rotate(11deg); }
+  55% { transform: rotate(-8deg); }
+  75% { transform: rotate(5deg); }
+  90% { transform: rotate(-2deg); }
+}
